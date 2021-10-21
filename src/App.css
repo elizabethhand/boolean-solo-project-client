@@ -39,3 +39,33 @@
   border-bottom: 1px solid black;
 }
 
+/* Homepage */
+
+.map{
+  display:grid;
+  place-items: center;
+  border: 1px solid black;
+  width: 320px;
+  height: 250px;
+}
+
+.cafe-title{
+  display:grid;
+  place-items: center;
+  padding: 10px;
+}
+
+.cafe-container{
+  display:grid;
+  grid-auto-flow: column;
+  overflow-x:hidden;
+}
+
+.cafe-tiles{
+  border: 1px solid black;
+  width: 130px;
+  height: 100px;
+  overflow: hidden;
+}
+
+
