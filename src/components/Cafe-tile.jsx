@@ -1,15 +1,12 @@
 import React from "react"
 
-export default function CafeTile() {
+export default function CafeTile({ category }) {
+    console.log(category)
+
     return (
-        <div className="cafe-container">
-            <div className="cafe-tiles">
-            </div>
-            <div className="cafe-tiles">
-            </div>
-            <div className="cafe-tiles">
-            </div>
+        <div className="cafe-tiles">{category.name}
         </div>
+
     )
 
 

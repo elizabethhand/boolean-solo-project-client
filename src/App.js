@@ -1,7 +1,7 @@
 import './App.css';
 import { Link, Switch, Route, Redirect } from "react-router-dom"
 import Header from './components/Header';
-import Homepage from './Pages/Homepage';
+import Homepage from './pages/Homepage';
 
 function App() {
   return (
