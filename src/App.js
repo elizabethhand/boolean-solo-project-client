@@ -2,6 +2,7 @@ import './App.css';
 import { Link, Switch, Route, Redirect } from "react-router-dom"
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
+import CafeDisplayPage from './pages/CafeDisplayPage';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           </Route>
           <Route path="/home">
             <Homepage />
+          </Route>
+          <Route path="/cafe/:id">
+            <CafeDisplayPage />
           </Route>
         </div>
       </div>

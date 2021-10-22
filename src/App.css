@@ -22,8 +22,8 @@
 }
 
 .screen {
-  display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  /* display: grid; */
+  /* grid-template-rows: 50px 1fr 50px; */
   place-content: bottom;
   padding: 10px;
   background-color: rgb(250, 250, 250);
@@ -74,5 +74,47 @@
   height: 100px;
   overflow: hidden;
 }
+
+/* Cafe display */
+
+.cafe-information-container{
+  display:grid;
+  place-items:center;
+  height: 330px;
+  border-bottom: 1px solid black;
+}
+
+.cafe-img{
+  width: 250px;
+}
+
+.directions{
+  border:1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.deal-container{
+  display:grid;
+  place-items:center;
+}
+
+.deal-tile{
+  border:1px solid black;
+  padding: 5px;
+}
+
+.deal-title{
+  margin:15px;
+}
+
+.qr-link{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 15px;
+  margin: 10px;
+}
+
+
 
 
