@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import CafeDisplayPage from './pages/CafeDisplayPage';
 import QrCode from './pages/QRCode';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <Route exact path="/cafe/:id/qrcode">
             <QrCode />
           </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+
         </div>
       </div>
     </div>
