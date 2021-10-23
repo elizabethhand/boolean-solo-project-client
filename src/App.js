@@ -3,6 +3,7 @@ import { Link, Switch, Route, Redirect } from "react-router-dom"
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import CafeDisplayPage from './pages/CafeDisplayPage';
+import QrCode from './pages/QRCode';
 
 function App() {
   return (
@@ -17,8 +18,11 @@ function App() {
           <Route path="/home">
             <Homepage />
           </Route>
-          <Route path="/cafe/:id">
+          <Route exact path="/cafe/:id">
             <CafeDisplayPage />
+          </Route>
+          <Route exact path="/cafe/:id/qrcode">
+            <QrCode />
           </Route>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export default function CafeDisplayPage() {
     const { id } = useParams();
@@ -26,7 +26,9 @@ export default function CafeDisplayPage() {
                         <p> {cafe.deal.name}</p>
                         <p> {cafe.deal.price}</p>
                     </div>
-                    <div className="qr-link"> Get QR code</div>
+                    <Link to="/cafe/1/qrcode">
+                        <div className="qr-link"> Get QR code</div>
+                    </Link>
                 </div>
             </>
 
