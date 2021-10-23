@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import CafeDisplayPage from './pages/CafeDisplayPage';
 import QrCode from './pages/QRCode';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
           </Route>
 
         </div>
