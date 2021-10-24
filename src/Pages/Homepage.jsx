@@ -9,6 +9,8 @@ import ReactMapGL, {
 export default function Homepage() {
     const [categories, setCategories] = useState([])
     const [deals, setdeals] = useState([])
+    const [cafes, setCafes] = useState()
+
     const [viewport, setViewport] = useState({
         latitude: 37.8,
         longitude: -122.4,
@@ -25,6 +27,10 @@ export default function Homepage() {
         fetch('http://localhost:3030/deals')
             .then(response => response.json())
             .then(data => setdeals(data.data))
+
+        fetch('http://localhost:3030/cafe')
+            .then(response => response.json())
+            .then(data => setCafes(data.data))
     }, []);
 
     const MAPBOX_TOKEN = 'pk.eyJ1IjoibGl6emllaGFuZCIsImEiOiJja3Y0NnEwdG0yYXBzMzFxdzRyc3hrdW1lIn0.43AQ7KfSybeTpzMJl_RuZA';
@@ -33,8 +39,6 @@ export default function Homepage() {
 
     function success(pos) {
         var crd = pos.coords;
-        console.log(crd.latitude)
-        console.log(crd.longitude)
         setViewport({
             ...viewport,
             latitude: crd.latitude,
@@ -46,11 +50,7 @@ export default function Homepage() {
         console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    function renderMarkers() {
-
-    }
-
-    if (categories && deals) {
+    if (categories && deals && cafes) {
         return (
             <div>
                 <ReactMapGL
@@ -61,6 +61,17 @@ export default function Homepage() {
                     onViewportChange={setViewport}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                 />
+                {/* {cafes.map((cafe) => (
+                    < Marker
+                        longitude={cafe.longitude}
+                        latitude={cafe.latitude}
+                        offsetLeft={30} offsetTop={30} >
+                        <div className="marker temporary-marker"><span></span></div>
+                    </Marker>
+                )
+                )
+                } */}
+
                 <h2 className="category-title"> Categories</h2>
                 <div className="tile-container">
                     {categories.map((category) => (
@@ -74,7 +85,7 @@ export default function Homepage() {
                         <DealTile deal={deal} />
                     ))}
                 </div>
-            </div>
+            </div >
         )
     }
     return null
