@@ -9,7 +9,7 @@ import ReactMapGL, {
 export default function Homepage() {
     const [categories, setCategories] = useState([])
     const [deals, setdeals] = useState([])
-    const [cafes, setCafes] = useState()
+    const [cafes, setCafes] = useState([])
 
     const [viewport, setViewport] = useState({
         latitude: 37.8,
@@ -50,7 +50,7 @@ export default function Homepage() {
         console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    if (categories && deals && cafes) {
+    if ((categories.length > 0) && (deals.length > 0) && (cafes.length > 0)) {
         return (
             <div>
                 <ReactMapGL
@@ -58,11 +58,12 @@ export default function Homepage() {
                     width="360px"
                     height="300px"
                     mapStyle="mapbox://styles/mapbox/streets-v9"
-                    onViewportChange={setViewport}
+                    onViewportChange={(viewport) => setViewport(viewport)}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                 />
-                {/* {cafes.map((cafe) => (
+                {cafes.map((cafe, index) => (
                     < Marker
+                        key={index}
                         longitude={cafe.longitude}
                         latitude={cafe.latitude}
                         offsetLeft={30} offsetTop={30} >
@@ -70,7 +71,7 @@ export default function Homepage() {
                     </Marker>
                 )
                 )
-                } */}
+                }
 
                 <h2 className="category-title"> Categories</h2>
                 <div className="tile-container">
