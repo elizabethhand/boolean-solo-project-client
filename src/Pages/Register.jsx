@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { useHistory } from "react-router-dom";
 
-export default function Register() {
+export default function Register({ setCurrentUser }) {
     let history = useHistory();
 
     function handleSubmit(event) {

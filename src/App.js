@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from "react"
 import { Link, Switch, Route, Redirect } from "react-router-dom"
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
@@ -8,11 +9,13 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(false)
+
   return (
     <div className="App">
       <div className="phone">
         <div className="screen">
-          <Header />
+          <Header currentUser={currentUser} />
           <Route path="/" exact>
             <Redirect to="/home">
             </Redirect>
@@ -27,10 +30,10 @@ function App() {
             <QrCode />
           </Route>
           <Route exact path="/login">
-            <Login />
+            <Login setCurrentUser={setCurrentUser} />
           </Route>
           <Route exact path="/register">
-            <Register />
+            <Register setCurrentUser={setCurrentUser} />
           </Route>
 
         </div>
