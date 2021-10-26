@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import DealTile from "../components/Deal-tile"
 import CategoryTile from "../components/Category-tile";
 import ReactMapGL, {
@@ -10,6 +11,7 @@ export default function Homepage() {
     const [categories, setCategories] = useState([])
     const [deals, setdeals] = useState([])
     const [cafes, setCafes] = useState([])
+    const [showPopup, togglePopup] = useState(false);
 
     const [viewport, setViewport] = useState({
         latitude: 37.8,
@@ -31,11 +33,12 @@ export default function Homepage() {
         fetch('http://localhost:3030/cafe')
             .then(response => response.json())
             .then(data => setCafes(data.data))
+
+        navigator.geolocation.getCurrentPosition(success, error);
     }, []);
 
-    const MAPBOX_TOKEN = 'pk.eyJ1IjoibGl6emllaGFuZCIsImEiOiJja3Y0NnEwdG0yYXBzMzFxdzRyc3hrdW1lIn0.43AQ7KfSybeTpzMJl_RuZA';
+    const MAPBOX_TOKEN = 'pk.eyJ1IjoibGl6emllaGFuZCIsImEiOiJja3Y0NnEwdG0yYXBzMzFxdzRyc3hrdW1lIn0.43AQ7KfSybeTpzMJl_RuZA'
 
-    navigator.geolocation.getCurrentPosition(success, error);
 
     function success(pos) {
         var crd = pos.coords;
@@ -60,18 +63,26 @@ export default function Homepage() {
                     mapStyle="mapbox://styles/mapbox/streets-v9"
                     onViewportChange={(viewport) => setViewport(viewport)}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
-                />
-                {cafes.map((cafe, index) => (
-                    < Marker
-                        key={index}
-                        longitude={cafe.longitude}
-                        latitude={cafe.latitude}
-                        offsetLeft={30} offsetTop={30} >
-                        <div className="marker temporary-marker"><span></span></div>
-                    </Marker>
-                )
-                )
-                }
+                >
+                    {cafes.map((cafe, index) => (
+                        <Marker key={index} latitude={cafe.latitude} longitude={cafe.longitude} offsetLeft={-20} offsetTop={-10} onClick={() => togglePopup({ cafe })} >
+                            <div>Cafe</div>
+                        </Marker>
+                    ))}
+                    {showPopup && <Popup
+                        latitude={showPopup.cafe.latitude}
+                        longitude={showPopup.cafe.longitude}
+                        closeButton={true}
+                        closeOnClick={false}
+                        onClose={() => togglePopup(false)}
+                        anchor="top" >
+                        <div>{showPopup.cafe.name}
+                            <Link to={`/cafe/${showPopup.cafe.id}`}>
+                                Go to cafe
+                            </Link>
+                        </div>
+                    </Popup>}
+                </ReactMapGL>
 
                 <h2 className="category-title"> Categories</h2>
                 <div className="tile-container">
