@@ -7,19 +7,11 @@ import ReactMapGL, {
     Popup
 } from "react-map-gl";
 
-export default function Homepage() {
+export default function Homepage({ viewport, setViewport }) {
     const [categories, setCategories] = useState([])
     const [deals, setdeals] = useState([])
     const [cafes, setCafes] = useState([])
     const [showPopup, togglePopup] = useState(false);
-
-    const [viewport, setViewport] = useState({
-        latitude: 37.8,
-        longitude: -122.4,
-        zoom: 14,
-        bearing: 0,
-        pitch: 0
-    });
 
     useEffect(() => {
         fetch('http://localhost:3030/categories')
@@ -34,24 +26,24 @@ export default function Homepage() {
             .then(response => response.json())
             .then(data => setCafes(data.data))
 
-        navigator.geolocation.getCurrentPosition(success, error);
+        // navigator.geolocation.getCurrentPosition(success, error);
     }, []);
 
     const MAPBOX_TOKEN = 'pk.eyJ1IjoibGl6emllaGFuZCIsImEiOiJja3Y0NnEwdG0yYXBzMzFxdzRyc3hrdW1lIn0.43AQ7KfSybeTpzMJl_RuZA'
 
 
-    function success(pos) {
-        var crd = pos.coords;
-        setViewport({
-            ...viewport,
-            latitude: crd.latitude,
-            longitude: crd.longitude
-        })
-    }
+    // function success(pos) {
+    //     var crd = pos.coords;
+    //     setViewport({
+    //         ...viewport,
+    //         latitude: crd.latitude,
+    //         longitude: crd.longitude
+    //     })
+    // }
 
-    function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
+    // function error(err) {
+    //     console.warn(`ERROR(${err.code}): ${err.message}`);
+    // }
 
     if ((categories.length > 0) && (deals.length > 0) && (cafes.length > 0)) {
         return (
