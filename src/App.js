@@ -7,6 +7,7 @@ import CafeDisplayPage from './pages/CafeDisplayPage';
 import QrCode from './pages/QRCode';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MapWithDirections from './pages/MapWithDirections';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route exact path="/cafe/:id/qrcode">
             <QrCode />
+          </Route>
+          <Route exact path="/cafe/:id/directions">
+            <MapWithDirections />
           </Route>
           <Route exact path="/login">
             <Login setCurrentUser={setCurrentUser} />
