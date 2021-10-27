@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
+import walkingIcon from "../assets/walking-icon.png"
 
 export default function CafeDisplayPage({ viewport }) {
     const { id } = useParams();
@@ -62,7 +63,10 @@ export default function CafeDisplayPage({ viewport }) {
                 <div className="cafe-information-container">
                     <h1> {cafe.name}</h1>
                     <img className="cafe-img" src={cafe.image}></img>
-                    <div className="directions">{tripDuration} mins</div>
+                    <div className="trip-duration">
+                        <img className="walking-icon" src={walkingIcon} />
+                        <p>{tripDuration} mins </p>
+                    </div>
                 </div>
                 <div className="deal-container">
                     <h1 className="deal-title"> Deal of the Day</h1>
@@ -70,7 +74,7 @@ export default function CafeDisplayPage({ viewport }) {
                         <p> {cafe.deal.name}</p>
                         <p> {cafe.deal.price}</p>
                     </div>
-                    <Link to="/cafe/1/qrcode">
+                    <Link to="/cafe/1/qrcode" style={{ textDecoration: 'none' }}>
                         <div className="qr-link"> Get QR code</div>
                     </Link>
                 </div>

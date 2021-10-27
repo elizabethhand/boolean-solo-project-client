@@ -6,6 +6,7 @@ import ReactMapGL, {
     Marker,
     Popup
 } from "react-map-gl";
+import locationPin from "../assets/pin.svg"
 
 export default function Homepage({ viewport, setViewport }) {
     const [categories, setCategories] = useState([])
@@ -50,15 +51,15 @@ export default function Homepage({ viewport, setViewport }) {
             <div>
                 <ReactMapGL
                     {...viewport}
-                    width="360px"
-                    height="300px"
+                    width="370px"
+                    height="310px"
                     mapStyle="mapbox://styles/mapbox/streets-v9"
                     onViewportChange={(viewport) => setViewport(viewport)}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                 >
                     {cafes.map((cafe, index) => (
                         <Marker key={index} latitude={cafe.latitude} longitude={cafe.longitude} offsetLeft={-20} offsetTop={-10} onClick={() => togglePopup({ cafe })} >
-                            <div>Cafe</div>
+                            <img className="location-pin" src={locationPin}></img>
                         </Marker>
                     ))}
                     {showPopup && <Popup
@@ -68,10 +69,13 @@ export default function Homepage({ viewport, setViewport }) {
                         closeOnClick={false}
                         onClose={() => togglePopup(false)}
                         anchor="top" >
-                        <div>{showPopup.cafe.name}
-                            <Link to={`/cafe/${showPopup.cafe.id}`}>
-                                Go to cafe
-                            </Link>
+                        <div className="popup-box">
+                            <div>{showPopup.cafe.name}</div>
+                            <div className="go-to-cafe-btn">
+                                <Link to={`/cafe/${showPopup.cafe.id}`} style={{ textDecoration: 'none' }}>
+                                    Go to cafe
+                                </Link>
+                            </div>
                         </div>
                     </Popup>}
                 </ReactMapGL>
