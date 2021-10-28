@@ -163,6 +163,49 @@
   width: 20px;
 }
 
+/* Category display page */
+
+.category-display-container{
+  display:grid;
+  place-items:center;
+  height: 550px;
+  overflow:scroll;
+}
+
+.category-name{
+  padding: 10px 0px 0px 10px;
+}
+
+.cafe-tile{
+  background-color: #FFFD98;
+  width: 310px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px;
+}
+
+.cafe-title{
+  font-size: 20px;
+  place-items:start;
+}
+
+.cafe-info{
+  display:grid;
+  grid-template-columns: 100px 1fr;
+  padding: 10px 0px;
+}
+
+.go-to-cafe-container{
+  display:grid;
+  place-items:end;
+}
+
+.tile-cafe-btn{
+  width: 80px;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+}
 
 
 

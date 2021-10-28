@@ -8,6 +8,7 @@ import QrCode from './pages/QRCode';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import MapWithDirections from './pages/MapWithDirections';
+import CategoryDisplay from './pages/CategoryDisplayPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false)
@@ -62,7 +63,9 @@ function App() {
           <Route exact path="/register">
             <Register setCurrentUser={setCurrentUser} />
           </Route>
-
+          <Route exact path="/categories/:category">
+            <CategoryDisplay />
+          </Route>
         </div>
       </div>
     </div>

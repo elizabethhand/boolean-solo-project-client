@@ -27,24 +27,12 @@ export default function Homepage({ viewport, setViewport }) {
             .then(response => response.json())
             .then(data => setCafes(data.data))
 
-        // navigator.geolocation.getCurrentPosition(success, error);
     }, []);
 
     const MAPBOX_TOKEN = 'pk.eyJ1IjoibGl6emllaGFuZCIsImEiOiJja3Y0NnEwdG0yYXBzMzFxdzRyc3hrdW1lIn0.43AQ7KfSybeTpzMJl_RuZA'
 
 
-    // function success(pos) {
-    //     var crd = pos.coords;
-    //     setViewport({
-    //         ...viewport,
-    //         latitude: crd.latitude,
-    //         longitude: crd.longitude
-    //     })
-    // }
 
-    // function error(err) {
-    //     console.warn(`ERROR(${err.code}): ${err.message}`);
-    // }
 
     if ((categories.length > 0) && (deals.length > 0) && (cafes.length > 0)) {
         return (

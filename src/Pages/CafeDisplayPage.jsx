@@ -15,10 +15,6 @@ export default function CafeDisplayPage({ viewport }) {
             .then(response => response.json())
             .then(data => {
                 setCafe(data.data)
-                console.log(viewport.longitude)
-                console.log(viewport.latitude)
-                console.log(data.data.longitude)
-                console.log(data.data.latitude)
                 return data
             })
             .then((data) => {
@@ -72,7 +68,7 @@ export default function CafeDisplayPage({ viewport }) {
                     <h1 className="deal-title"> Deal of the Day</h1>
                     <div className="deal-tile">
                         <p> {cafe.deal.name}</p>
-                        <p> {cafe.deal.price}</p>
+                        <p> £{cafe.deal.price}</p>
                     </div>
                     <Link to="/cafe/1/qrcode" style={{ textDecoration: 'none' }}>
                         <div className="qr-link"> Get QR code</div>
