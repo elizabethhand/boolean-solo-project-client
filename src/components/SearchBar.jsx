@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import search from "../assets/search.png"
 
-export default function SearchBar({ cafes, setUserInput, setShowSuggestions, setFilteredSuggestions }) {
+export default function SearchBar({ cafesandCategories, setUserInput, setShowSuggestions, setFilteredSuggestions }) {
 
     function handleChange(e) {
         let inputValue = e.currentTarget.value
@@ -16,7 +16,7 @@ export default function SearchBar({ cafes, setUserInput, setShowSuggestions, set
             setShowSuggestions(false)
         }
 
-        let filteredCafes = cafes.filter(cafe =>
+        let filteredCafes = cafesandCategories.filter(cafe =>
             cafe.name.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
         )
         setFilteredSuggestions(filteredCafes.slice(0, 10))

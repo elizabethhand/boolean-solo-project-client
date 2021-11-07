@@ -13,6 +13,7 @@ import SearchPage from './pages/SearchPage';
 
 function App() {
   const [cafes, setCafes] = useState([])
+  const [categories, setCategories] = useState([])
   const [currentUser, setCurrentUser] = useState(false)
   const [viewport, setViewport] = useState({
     latitude: 37.8,
@@ -43,7 +44,30 @@ function App() {
       .then(response => response.json())
       .then(data => setCafes(data.data))
 
+    fetch('http://localhost:3030/categories')
+      .then(response => response.json())
+      .then(data => setCategories(data.data))
+
   }, []);
+
+  // function restaurantsinCategoriesCount() {
+  //   console.log(categories)
+  //   categories.forEach(function (category) {
+  //     category.restaurants.forEach(function (restaurant) {
+  //       console.log(restaurant)
+  //     })
+  //   })
+
+  // categories.map(category =>
+  //   category.restaurants.map((restaurant) => {
+  //     console.log(restaurant.restaurant)
+  //     return null;
+  //   })
+  // )
+
+  // if (categories.length > 0) {
+  //   restaurantsinCategoriesCount()
+  // }
 
   return (
     <div className="App">
@@ -55,7 +79,7 @@ function App() {
             </Redirect>
           </Route>
           <Route path="/home">
-            <Homepage viewport={viewport} setViewport={setViewport} cafes={cafes} />
+            <Homepage viewport={viewport} setViewport={setViewport} cafes={cafes} categories={categories} />
           </Route>
           <Route exact path="/cafe/:id">
             <CafeDisplayPage viewport={viewport} />
@@ -76,7 +100,7 @@ function App() {
             <CategoryDisplay />
           </Route>
           <Route exact path="/search">
-            <SearchPage cafes={cafes} />
+            <SearchPage cafes={cafes} categories={categories} />
           </Route>
         </div>
       </div>

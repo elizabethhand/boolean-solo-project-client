@@ -179,7 +179,7 @@
 }
 
 .category-name{
-  padding: 10px 0px 0px 10px;
+  padding: 10px 0px 15px 10px;
 }
 
 .cafe-tile{
@@ -188,6 +188,7 @@
   border-radius: 10px;
   padding: 10px;
   margin: 15px;
+  height: 150px;
 }
 
 .cafe-title{
@@ -201,11 +202,6 @@
   padding: 10px 0px;
 }
 
-.go-to-cafe-container{
-  display:grid;
-  place-items:end;
-}
-
 .tile-cafe-btn{
   width: 80px;
   display:grid;
@@ -215,6 +211,53 @@
 
 .cafe-tile-img{
   width:150px;
+}
+
+.search-filter{
+  border-top: solid 1px #DDDDDD;
+  border-bottom: solid 1px #DDDDDD;
+  /* display:grid;
+  place-items:center; */
+  /* grid-template-columns: 50% 50%;
+  columns:2; */
+  display:flex;
+  padding:10px;
+  width: 100%;
+  justify-content: center;
+  background-color: #F8F8F8;
+}
+
+.search-info-container{
+  width: 100%;
+  display:grid;
+  place-items:center;
+}
+
+.deal-info-container{
+  position:relative;
+}
+
+.go-to-cafe-btn{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+}
+
+.sort{
+  flex-basis: 50%;
+  border-right: 1px solid #DDDDDD;
+display:flex;
+  justify-content: center;
+}
+
+.filter{
+  flex-basis:50%;
+  display:flex;
+  justify-content: center;
+}
+
+.result-number{
+  padding: 10px 0px 0px 0px;
 }
 
 /* Search page */

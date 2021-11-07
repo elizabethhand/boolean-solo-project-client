@@ -17,15 +17,11 @@ export default function CategoryDisplay() {
     //     return string.charAt(0).toUpperCase() + string.slice(1);
     // }
 
-    console.log(categories)
-
     let cafeArray = categories.map(category =>
         category.restaurants.map((restaurant) => {
             return restaurant.restaurant
         })
     )
-
-    console.log(cafeArray)
 
     // const capitalizedCategory = capitalizeFirstLetter(cafeCategory)
 
@@ -33,7 +29,16 @@ export default function CategoryDisplay() {
 
         return (
             <div className="category-display-container">
-                <p className="category-name">Displaying results for: {category}</p>
+                <div className="search-info-container">
+                    <div className="search-info">
+                        <p className="category-name">Displaying results for: {category}</p>
+                    </div>
+                    <div className="search-filter">
+                        <div className="sort"> Sort</div>
+                        <div className="filter"> Filter</div>
+                    </div>
+                    <p className="result-number"> {cafeArray[0].length} cafes found </p>
+                </div>
                 <div className="cafe-tile-container">
                     {cafeArray[0].map((cafe, index) =>
                         <CafeDisplayTile cafe={cafe} />

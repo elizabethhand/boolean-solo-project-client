@@ -9,16 +9,11 @@ import ReactMapGL, {
 import locationPin from "../assets/pin.svg"
 import SearchBar from "../components/SearchBar";
 
-export default function Homepage({ viewport, setViewport, cafes }) {
-    const [categories, setCategories] = useState([])
+export default function Homepage({ viewport, setViewport, cafes, categories }) {
     const [deals, setdeals] = useState([])
     const [showPopup, togglePopup] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:3030/categories')
-            .then(response => response.json())
-            .then(data => setCategories(data.data))
-
         fetch('http://localhost:3030/deals')
             .then(response => response.json())
             .then(data => setdeals(data.data))
