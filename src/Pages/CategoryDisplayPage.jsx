@@ -3,40 +3,41 @@ import { useParams } from "react-router-dom"
 import CafeDisplayTile from "../components/Category-cafe-display-tile";
 
 export default function CategoryDisplay() {
-    const [restaurants, setRestaurants] = useState([])
+    const [categories, setCategories] = useState([])
     const { category } = useParams()
 
     useEffect(() => {
         fetch(`http://localhost:3030/categories/${category}`)
             .then(response => response.json())
-            .then(data => setRestaurants(data.data))
+            .then(data => setCategories(data.data))
 
     }, []);
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    // function capitalizeFirstLetter(string) {
+    //     return string.charAt(0).toUpperCase() + string.slice(1);
+    // }
 
-    // console.log(restaurants)
+    console.log(categories)
 
-    const capitalizedCategory = capitalizeFirstLetter(category)
+    let cafeArray = categories.map(category =>
+        category.restaurants.map((restaurant) => {
+            return restaurant.restaurant
+        })
+    )
 
-    if (restaurants.length > 0) {
+    console.log(cafeArray)
+
+    // const capitalizedCategory = capitalizeFirstLetter(cafeCategory)
+
+    if (cafeArray.length > 0) {
 
         return (
             <div className="category-display-container">
-                <p className="category-name">Displaying results for: {capitalizedCategory}</p>
+                <p className="category-name">Displaying results for: {category}</p>
                 <div className="cafe-tile-container">
-                    {/* {restaurants.restuarants.map(restaurant =>
-                    console.log(restaurant)
-                    <CafeDisplayTile restaurant={restaurant} />
-                )} */}
-                    <CafeDisplayTile />
-                    <CafeDisplayTile />
-                    <CafeDisplayTile />
-                    <CafeDisplayTile />
-                    <CafeDisplayTile />
-                    <CafeDisplayTile />
+                    {cafeArray[0].map((cafe, index) =>
+                        <CafeDisplayTile cafe={cafe} />
+                    )}
                 </div>
             </div>
         )

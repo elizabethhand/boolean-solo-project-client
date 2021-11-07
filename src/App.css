@@ -29,6 +29,8 @@
   height: 610px;
   width: 370px;
   background-color: #B9E3C6;
+  overflow:scroll;
+  position:relative;
 }
 
 /* Header */
@@ -191,7 +193,7 @@
 
 .cafe-info{
   display:grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 165px 1fr;
   padding: 10px 0px;
 }
 
@@ -207,5 +209,44 @@
   font-size:12px;
 }
 
+.cafe-tile-img{
+  width:150px;
+}
+
+/* Search bar */
+
+.search-bar-container{
+  display:grid;
+  place-items:center;
+  height: 45px;
+}
+
+.search-bar{
+  background-color:#59C9A5;
+  border-radius:10px;
+  width: 100px;
+  height: 20px;
+  width:200px;
+  padding:5px;
+  border:0;
+  outline:none;
+  font-size: 16px;
+}
+
+.suggestions-box{
+  position:absolute;
+  top: 90px;
+  background-color: #FFFD98;
+  width: 210px;
+  z-index: 1;
+}
+
+.suggestions-box ul{
+  padding:5px;
+}
+
+.suggestions-box ul:hover{
+  background-color: #D81E5B;
+}
 
 
