@@ -17,7 +17,8 @@ export default function SearchPage({ cafes }) {
             />
             {showSuggestions &&
                 <SearchSuggestions
-                    filteredSuggestions={filteredSuggestions} />
+                    filteredSuggestions={filteredSuggestions}
+                    userInput={userInput} />
             }
         </div>
     )

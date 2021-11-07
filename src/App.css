@@ -241,11 +241,12 @@
   padding: 10px;
 }
 
-.suggestions-box ul{
+.suggestions-box li{
   padding:7px;
+  list-style-type:none;
 }
 
-.suggestions-box ul:hover{
+.suggestions-box li:hover{
   background-color: #D81E5B;
 }
 
