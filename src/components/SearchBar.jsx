@@ -1,10 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import search from "../assets/search.png"
 
-export default function SearchBar({ cafes }) {
-    const [userInput, setUserInput] = useState()
-    const [showSuggestions, setShowSuggestions] = useState(false)
-    const [filteredSuggestions, setFilteredSuggestions] = useState()
+export default function SearchBar({ cafes, setUserInput, setShowSuggestions, setFilteredSuggestions }) {
 
     function handleChange(e) {
         let inputValue = e.currentTarget.value
@@ -21,28 +19,14 @@ export default function SearchBar({ cafes }) {
         let filteredCafes = cafes.filter(cafe =>
             cafe.name.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
         )
-        setFilteredSuggestions(filteredCafes.slice(0, 5))
+        setFilteredSuggestions(filteredCafes.slice(0, 10))
 
-    }
-
-    function Autocomplete() {
-        return (
-            <div className="suggestions-box">
-                {filteredSuggestions.map((suggestion) => (
-                    <Link to={`/cafe/${suggestion.id}`} style={{ textDecoration: 'none' }}>
-                        < ul > {suggestion.name}</ul>
-                    </Link >
-                ))
-                }
-            </div >
-        )
     }
 
     return (
         <div className="search-bar-container">
             <input type="text" onChange={handleChange} className="search-bar" placeholder="Search..." />
-            {showSuggestions && <Autocomplete />
-            }
+            <input className="search-submit-btn" type="image" src={search} />
         </div>
     )
 }

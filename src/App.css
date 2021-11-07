@@ -51,6 +51,10 @@
   grid-auto-flow: column;
 }
 
+.header img{
+  width:20px;
+}
+
 /* Homepage */
 
 .map{
@@ -213,7 +217,7 @@
   width:150px;
 }
 
-/* Search bar */
+/* Search page */
 
 .search-bar-container{
   display:grid;
@@ -223,30 +227,32 @@
 
 .search-bar{
   background-color:#59C9A5;
-  border-radius:10px;
+  border-radius:20px;
   width: 100px;
   height: 20px;
-  width:200px;
-  padding:5px;
+  width:250px;
+  padding:7px 10px;
   border:0;
   outline:none;
   font-size: 16px;
 }
 
 .suggestions-box{
-  position:absolute;
-  top: 90px;
-  background-color: #FFFD98;
-  width: 210px;
-  z-index: 1;
+  padding: 10px;
 }
 
 .suggestions-box ul{
-  padding:5px;
+  padding:7px;
 }
 
 .suggestions-box ul:hover{
   background-color: #D81E5B;
+}
+
+.search-submit-btn{
+  width: 20px;
+  position:absolute;
+  right: 65px;
 }
 
 

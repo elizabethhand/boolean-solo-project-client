@@ -1,6 +1,8 @@
 import { Button } from "@material-ui/core"
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import search from "../assets/search.png"
+import user from "../assets/user.png"
 
 export default function Header({ currentUser }) {
     return (
@@ -11,7 +13,7 @@ export default function Header({ currentUser }) {
             <div className="login">
                 {!currentUser.username && (
                     <div className="login-register-">
-                        <Link to="/login" style={{ textDecoration: 'none' }}>
+                        {/* <Link to="/login" style={{ textDecoration: 'none' }}>
                             <Button style={{ backgroundColor: '#FFFD98', padding: '5px' }} variant="contained">
                                 Login
                             </Button>
@@ -20,6 +22,14 @@ export default function Header({ currentUser }) {
                             <Button style={{ backgroundColor: '#FFFD98', padding: '5px', margin: '0px 5px' }} variant="contained">
                                 Register
                             </Button>
+                        </Link> */}
+
+                        <Link to="/search">
+                            <img src={search}></img>
+                        </Link>
+
+                        <Link to="/login">
+                            <img src={user}></img>
                         </Link>
                     </div>
                 )}

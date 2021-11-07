@@ -9,8 +9,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import MapWithDirections from './pages/MapWithDirections';
 import CategoryDisplay from './pages/CategoryDisplayPage';
+import SearchPage from './pages/SearchPage';
 
 function App() {
+  const [cafes, setCafes] = useState([])
   const [currentUser, setCurrentUser] = useState(false)
   const [viewport, setViewport] = useState({
     latitude: 37.8,
@@ -36,6 +38,13 @@ function App() {
     const coords = await getCoords();
   }
 
+  useEffect(() => {
+    fetch('http://localhost:3030/cafe')
+      .then(response => response.json())
+      .then(data => setCafes(data.data))
+
+  }, []);
+
   return (
     <div className="App">
       <div className="phone">
@@ -46,7 +55,7 @@ function App() {
             </Redirect>
           </Route>
           <Route path="/home">
-            <Homepage viewport={viewport} setViewport={setViewport} />
+            <Homepage viewport={viewport} setViewport={setViewport} cafes={cafes} />
           </Route>
           <Route exact path="/cafe/:id">
             <CafeDisplayPage viewport={viewport} />
@@ -65,6 +74,9 @@ function App() {
           </Route>
           <Route exact path="/categories/:category">
             <CategoryDisplay />
+          </Route>
+          <Route exact path="/search">
+            <SearchPage cafes={cafes} />
           </Route>
         </div>
       </div>

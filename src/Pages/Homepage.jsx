@@ -9,10 +9,9 @@ import ReactMapGL, {
 import locationPin from "../assets/pin.svg"
 import SearchBar from "../components/SearchBar";
 
-export default function Homepage({ viewport, setViewport }) {
+export default function Homepage({ viewport, setViewport, cafes }) {
     const [categories, setCategories] = useState([])
     const [deals, setdeals] = useState([])
-    const [cafes, setCafes] = useState([])
     const [showPopup, togglePopup] = useState(false);
 
     useEffect(() => {
@@ -24,10 +23,6 @@ export default function Homepage({ viewport, setViewport }) {
             .then(response => response.json())
             .then(data => setdeals(data.data))
 
-        fetch('http://localhost:3030/cafe')
-            .then(response => response.json())
-            .then(data => setCafes(data.data))
-
     }, []);
 
     const MAPBOX_TOKEN = 'pk.eyJ1IjoibGl6emllaGFuZCIsImEiOiJja3Y0NnEwdG0yYXBzMzFxdzRyc3hrdW1lIn0.43AQ7KfSybeTpzMJl_RuZA'
@@ -35,7 +30,6 @@ export default function Homepage({ viewport, setViewport }) {
     if ((categories.length > 0) && (deals.length > 0) && (cafes.length > 0)) {
         return (
             <div>
-                <SearchBar cafes={cafes}/>
                 <ReactMapGL
                     {...viewport}
                     width="370px"
